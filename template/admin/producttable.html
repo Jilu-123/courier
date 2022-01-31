@@ -1,0 +1,93 @@
+{% extends "admin/headerfooter.html" %}
+{% block content %}
+		<!-- main content start-->
+		<div id="page-wrapper">
+			<div class="main-page">
+				<div class="tables">
+					<h2 class="title1">Tables</h2>
+					
+				
+					<div class="table-responsive bs-example widget-shadow">
+						<h4>product Table:</h4>
+						<table class="table table-bordered">
+						 <thead> 
+						 	<tr> <th>name</th>
+						 		<th>productname</th>
+						 		<th>price</th> 
+						 		<th>address</th> 
+						 		<th>starting</th> 
+						 		<th>destination</th>
+						 		<th>status</th>
+						 		
+						 	</tr> 
+						 </thead> 
+
+						 <tbody>
+						{% for x in product %}
+						{% if x.status == "pending" %}
+						       <<td>{{x.uid.firstname}} {{x.uid.lastname}}</td>
+
+						 		<td>{{x.productname}}</td>
+						 		<td>{{x.price}}</td>
+                                <td>{{x.address}}</td>
+                                <td>{{x.starting}}</td>
+                                <td>{{x.destination}}</td>
+                              <td><a href="/productapprove/?id={{x.id}}">pending</a></td> 
+                               <td><a href="/productreject/?id={{x.id}}">reject</a></td>
+
+
+
+                        {% else %}
+                  		{% endif %}
+						    </tr> 
+						  </tbody>
+                        {% endfor %}
+					    </table> 
+					</div>
+
+			
+					<div class="table-responsive bs-example widget-shadow">
+						<h4>product approved Table:</h4>
+						<table class="table table-bordered">
+						 <thead> 
+						 	<tr> 
+						 		<th>name</th>
+						 		<th>productname</th>
+						 		<th>price</th> 
+						 		<th>address</th> 
+						 		<th>starting</th> 
+						 		<th>destination</th>
+						 		<th>status</th>
+						 		
+						 	</tr> 
+						 </thead> 
+
+						 <tbody>
+						{% for x in product %}
+								{% if x.status == "approved" %}
+								<td>{{x.uid.firstname}} {{x.uid.lastname}}</td>
+						 		<td>{{x.productname}}</td>
+						 		<td>{{x.price}}</td>
+                                <td>{{x.address}}</td>
+                                <td>{{x.starting}}</td>
+                                <td>{{x.destination}}</td>
+                                <td>{{x.status}}</td>
+
+
+                                
+                        {% else %}
+                  		{% endif %}
+						    </tr> 
+						  </tbody>
+                        {% endfor %}
+					    </table> 
+					</div>
+
+				</div>
+			</div>
+		</div>
+	{% endblock %}
+
+
+
+	

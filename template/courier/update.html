@@ -1,0 +1,75 @@
+{% extends "courier/headerfooter.html" %}
+{% block content %}
+    <!-- Breadcrumb Area -->
+    <div class="breadcrumb-area" style="background-image:url(/static/courier/img/breadcrumb/01.png);">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-inner">
+                        <h2 class="page-title">REGISTRATION</h2>
+                        <ul class="page-list">
+                            <li><a href="index-2.html">Home</a></li>
+                            <li><a href="#">registation us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Contact Section -->
+    <div class="contact-section padding-bottom-100 padding-top-200 bg-image" style="background-image: url(/static/courier/img/bg/09.png);">
+        <div class="container">
+            <div class="row no-gutters">
+                <div class="col-lg-12">
+                    <div class="contact-info">
+                        {% for x in db %}
+                        <form action="/update/?id={{x.id}}"  class="contact-page-form" method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group"><label style="color: white">PRODUCT NAME:</label>
+                                <input type="text" name="product" placeholder=""  value="{{x.productname}}" required="" >
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group"><label style="color: white">PRICE:</label>
+                                <input type="text"  name="price" placeholder=""  value="{{x.price}}" required="">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                  <div class="form-group"><label style="color: white">ADDRESS:</label>
+                                        <input type="text"  class="form-control" cols="4" rows="4"  name="address"  value="{{x.address}}"placeholder="" >
+                                    </div>
+                                </div>
+                                 <div class="col-md-12">
+                                    <div class="form-group"><label style="color: white">STARTING DATE:</label>
+                                <input type="date" name="starting" placeholder=""  value="{{x.starting}}" required="">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group"><label style="color: white">DESTINATION:</label>
+                                <input type="date"  name="destination" placeholder=""  value="{{x.destination}}"required="">
+                                    </div>
+                                </div>
+                             
+                                <div class="col-lg-12">
+                                  
+                                    <div class="btn-wrapper desktop-center">
+                                        <input type="submit"  class="boxed-btn reverse-color" value="UPDATE">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                         {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+
+    {% endblock %}

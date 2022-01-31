@@ -1,0 +1,88 @@
+{% extends "admin/headerfooter.html" %}
+{% block content %}
+		<!-- main content start-->
+		<div id="page-wrapper">
+			<div class="main-page">
+				<div class="tables">
+					<h2 class="title1">Tables</h2>
+					<div class="table-responsive bs-example widget-shadow">
+						<h4>User Table:</h4>
+						<table class="table table-bordered">
+						 <thead> 
+								<tr>
+								  
+								  <th>firstname</th>
+								  <th>lastname</th>
+								  <th>address</th>
+								  <th>email</th>
+								  <th>password</th>
+								  <th>status</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+								{% for x in user %}
+								{% if x.status == "pending" %}
+									<td>{{x.firstname}}</td>
+									<td> {{x.lastname}}</td>
+									<td>{{x.address}}</td>
+									<td>{{x.email}}</td>
+									<td>{{x.password}}</td>
+								    <td><a href="/approve/?id={{x.id}}">pending</a></td>
+								   <!-- <td><a href="/pending/?id={{x.id}}">pending</a></td>-->
+
+                  				{% else %}
+                  				{% endif %}
+								</tr>
+							</tbody>
+							    {% endfor %}
+						</table>
+
+					</div>
+				
+
+				<div class="table-responsive bs-example widget-shadow">
+						<h4>User approved:</h4>
+						<table class="table table-bordered">
+						 <thead> 
+								<tr>
+								  
+								  <th>firstname</th>
+								  <th>lastname</th>
+								  <th>address</th>
+								  <th>email</th>
+								  <th>password</th>
+								  <th>status</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+								{% for x in user %}
+								{% if x.status == "approved" %}
+
+									<td>{{x.firstname}}</td>
+									<td> {{x.lastname}}</td>
+									<td>{{x.address}}</td>
+									<td>{{x.email}}</td>
+									<td>{{x.password}}</td>
+								    <td>{{x.status}}</td>
+								   <!-- <td><a href="/pending/?id={{x.id}}">pending</a></td>-->
+{% else %}
+                  				{% endif %}
+                  
+								</tr>
+							</tbody>
+							    {% endfor %}
+						</table>
+
+					</div>
+				
+					
+				</div>
+			</div>
+		</div>
+	{% endblock %}
+
+
+
+	

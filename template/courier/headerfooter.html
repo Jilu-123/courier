@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from bytesed.com/tf/additrans/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 16 Dec 2021 08:27:13 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Additrans - Transport and Logistics HTML Template</title>
+    <!-- favicon -->
+    <link rel=icon href=favicon.ico sizes="20x20" type="image/png">
+    <!-- animate -->
+    <link rel="stylesheet" href="/static/courier/css/animate.css">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="/static/courier/css/bootstrap.min.css">
+    <!-- magnific popup -->
+    <link rel="stylesheet" href="/static/courier/css/magnific-popup.css">
+    <!-- owl carousel -->
+    <link rel="stylesheet" href="/static/courier/css/owl.carousel.min.css">
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="/static/courier/css/font-awesome.min.css">
+    <!-- flaticon -->
+    <link rel="stylesheet" href="/static/courier/css/flaticon.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="/static/courier/css/style.css">
+    <!-- responsive Stylesheet -->
+    <link rel="stylesheet" href="/static/courier/css/responsive.css">
+     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+  <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    var availableTags = [
+      {% for x in prd %}
+      '{{x.productname}}',
+      {% endfor %}
+    ];
+    $( "#product_name" ).autocomplete({
+      source: availableTags
+    });
+  } );
+  </script>
+  
+</head>
+
+<body>
+    <!-- //. search Popup -->
+    <div class="body-overlay" id="body-overlay"></div>
+    <div class="search-popup" id="search-popup">
+        <form action="/search/"  method="post" class="search-form">
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="text" class="form-control" name="search" placeholder="Search....." id='product_name'>
+            </div>
+            <!-- <input  type="submit" value="" ></button> -->
+        </form>
+    </div>
+    <div class="header-style-01">
+        <div class="topbar-area style-01">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="topbar-inner">
+                            <div class="left-contnet">
+                                <ul class="info-items">
+                                    <li><a href="tel:000111555"><i class="flaticon-phone"></i> +1 (327) 66676 123</a></li>
+                                    <li><a href="mailto:info@Attorgmail.com"><i class="flaticon-mail"></i> info@Attorgmail.com</a></li>
+                                    <li><a href="mailto:info@Attorgmail.com"><i class="flaticon-clock"></i> 10:00 Am - 06:00 Pm</a></li>
+                                    {% if request.session.name %}
+                                    <li><a><i class="fa fa-user"></i>{{request.session.name}} </a></li>
+                                    {% else %}
+                                    {% endif %}
+                                </ul>
+                            </div>
+                            <div class="right-contnet">
+                                <div class="social-link">
+                                    <ul>
+                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- support bar area end -->
+        <nav class="navbar navbar-area has-topbar navbar-expand-lg nav-style-02">
+            <div class="container nav-container">
+                <div class="responsive-mobile-menu">
+                    <div class="logo-wrapper">
+                        <a href="/index-2/" class="logo">
+                            <img src="/static/courier/img/logo.png" alt="">
+                        </a>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bizcoxx_main_menu" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="bizcoxx_main_menu">
+                    <ul class="navbar-nav">
+                        <li class="menu-item-has-children current-menu-item">
+                            <a href="#">Home</a>
+                            <ul class="sub-menu">
+                                <li><a href="/index-2/">Home 01</a></li>
+                                <li><a href="/index-3/">Home 02</a></li>
+                                <li><a href="/index-4/">Home 03</a></li>
+                                <li><a href="/index-5/">Home 04</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/about/">About</a></li>
+                        <li class="menu-item-has-children">
+                            <a href="#">Services</a>
+                            <ul class="sub-menu">
+                                <li><a href="/services/">Services</a></li>
+                                <li><a href="/services-details/">Services Details</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a href="#">Blog</a>
+                            <ul class="sub-menu">
+                                <li><a href="/blog/">Blog</a></li>
+                                <li><a href="/blog-details/">Blog Details</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/contact/">Contact</a></li>
+                         <li><a href="/userregistration/">User Registration</a></li>
+
+                        {% if request.session.myid %}
+
+                        <li><a href="/logout/">logout</a></li>
+                        <li><a href="/viewuser/">viewprofile</a></li>
+
+
+                          <li><a href="/product/">product</li></a>
+                          <li><a href="/viewproduct/">viewproduct</a>
+                          </li>
+                        {% else %}
+                        <li><a href="/signin/">sign</a></li>
+                        {% endif %}
+
+
+                    </ul>
+                </div>
+
+                     
+                       
+                <div class="nav-right-content">
+                    <div class="icon-part">
+                        <ul>
+                            <li id="search"><a href="#"><i class="flaticon-search-1
+                                "></i></a></li>
+                            <li class="cart"><a href="#"><i class="flaticon-shopping-cart"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="btn-wrapper">
+                        <a href="#" class="request-btn">Request a quote</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- navbar area end -->
+    </div>
+    
+    {% block content %}
+    {% endblock %}
+
+
+
+     <!-- footer area start -->
+    <footer class="footer-area">
+        <div class="footer-top padding-top-115 padding-bottom-50">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget widget">
+                            <div class="about_us_widget">
+                                <a href="/index-2/" class="footer-logo"> <img src="/static/courier/img/logo.png" alt="footer logo"></a>
+                                <p>We are able to guarantee a very high level of satisfaction for our clients. Pharetra libero non facilisis to your company & family.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget widget widget_nav_menu">
+                            <h4 class="widget-title">Our services</h4>
+                            <ul>
+                                <li><a href="#">Warhouse</a></li>
+                                <li><a href="#">Air Fright Soultions for all</a></li>
+                                <li><a href="#">Sea Fright solutions & Catering</a></li>
+                                <li><a href="#">Storage</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget widget widget_nav_menu">
+                            <h4 class="widget-title">our support</h4>
+                            <ul>
+                                <li><a href="#">Privacy & Policy</a></li>
+                                <li><a href="#">FAQS</a></li>
+                                <li><a href="#">Terms & Conditions</a></li>
+                                <li><a href="#">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget widget ">
+                            <h4 class="widget-title">Contact us</h4>
+                            <ul class="contact_info_list">
+                                <li class="single-info-item">
+                                    <div class="details">
+                                        Fifth Avenue , Broadway, New York
+                                    </div>
+                                </li>
+                                <li class="single-info-item">
+                                    <div class="details">
+                                        +3 123 456 789
+                                    </div>
+                                </li>
+                                <li class="single-info-item">
+                                    <div class="details">
+                                        info@yourmail.com
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="copyright-area-inner">
+                            &copy; Copyright 2020 Additrans All rights reserved.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer area end -->
+
+
+
+    <!-- back to top area start -->
+    <div class="back-to-top">
+        <span class="back-top"><i class="fa fa-angle-up"></i></span>
+    </div>
+    <!-- back to top area end -->
+
+    <!-- preloader area start -->
+   <!--  <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="cancel-preloader">
+                <a href="#">Cancel Preloader</a>
+            </div>
+            <div class="TruckLoader">
+                <div class="TruckLoader-cab"></div>
+                <div class="TruckLoader-smoke"></div>
+            </div>
+            <hr/>
+        </div>
+    </div> -->
+    <!-- preloader area end -->
+
+    <!-- jquery -->
+    <!-- <script src="/static/courier/js/jquery-2.2.4.min.js"></script> -->
+    <!-- popper -->
+    <script src="/static/courier/js/popper.min.js"></script>
+    <!-- bootstrap -->
+    <script src="/static/courier/js/bootstrap.min.js"></script>
+    <!-- magnific popup -->
+    <script src="/static/courier/js/jquery.magnific-popup.js"></script>
+    <!-- wow -->
+    <script src="/static/courier/js/wow.min.js"></script>
+    <!-- owl carousel -->
+    <script src="/static/courier/js/owl.carousel.min.js"></script>
+    <!-- waypoint -->
+    <script src="/static/courier/js/waypoints.min.js"></script>
+    <!-- counterup -->
+    <script src="/static/courier/js/jquery.counterup.min.js"></script>
+    <!-- imageloaded -->
+    <script src="/static/courier/js/imagesloaded.pkgd.min.js"></script>
+    <!-- isotope -->
+    <script src="/static/courier/js/isotope.pkgd.min.js"></script>
+    <!-- main js -->
+    <script src="/static/courier/js/main.js"></script>
+
+</body>
+
+
+<!-- Mirrored from bytesed.com/tf/additrans/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 16 Dec 2021 08:27:47 GMT -->
+</html>
